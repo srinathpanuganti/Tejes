@@ -27,7 +27,7 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      className={`bg-white/95 fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
           ? "bg-white/95 backdrop-blur-md shadow-lg"
           : "bg-transparent"
@@ -37,7 +37,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
-            <div className="w-30 h-24 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-xl flex items-center justify-center">
+            <div className="w-30 h-24 bg-gradient-to-br from-blue-200 to-blue-50 rounded-xl flex items-center justify-center">
               <span className="">
                 <img src={logo} alt="" />
               </span>
@@ -52,8 +52,8 @@ const Header = () => {
                 to={item.path}
                 className={`font-medium transition-colors duration-200 hover:text-blue-600 ${
                   location.pathname === item.path
-                    ? "text-sky-300"
-                    : "text-cyan-500"
+                    ? "text-sky-500"
+                    : "text-sky-400"
                 }`}
               >
                 {item.name}

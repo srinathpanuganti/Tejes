@@ -132,8 +132,8 @@ const Footer = () => {
             <ul className="space-y-3">
               {[
                 { name: "About TEJES", path: "/about" },
-                { name: "Why Choose Us", path: "/about" },
                 { name: "Latest News", path: "/blog" },
+                { name: "Why Choose Us", path: "/about" },
                 { name: "Contact Support", path: "/contact" },
               ].map((link, index) => (
                 <li key={index}>

@@ -179,50 +179,50 @@ const HomePage = () => {
     const Icon = service.icon;
 
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-        <div className="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-2 sm:p-4 z-50">
+        <div className="bg-white rounded-2xl sm:rounded-3xl max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto shadow-2xl mx-2 sm:mx-0">
           {/* Header */}
-          <div className={`relative p-8 bg-gradient-to-br ${colors.bg} text-white rounded-t-3xl`}>
+          <div className={`relative p-4 sm:p-6 md:p-8 bg-gradient-to-br ${colors.bg} text-white rounded-t-2xl sm:rounded-t-3xl`}>
             <button
               onClick={() => setActivePopup(null)}
-              className="absolute top-6 right-6 p-2 hover:bg-white hover:bg-opacity-20 rounded-full transition-all duration-200"
+              className="absolute top-3 right-3 sm:top-4 sm:right-4 md:top-6 md:right-6 p-1.5 sm:p-2 hover:bg-white hover:bg-opacity-20 rounded-full transition-all duration-200"
             >
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
-            <div className="flex items-center space-x-4">
-              <div className="w-16 h-16 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center">
-                <Icon className="w-8 h-8 text-white" />
+            <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 pr-8 sm:pr-0">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-white bg-opacity-20 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
+                <Icon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
               </div>
               <div>
-                <h2 className="text-3xl font-bold mb-2">{service.title}</h2>
-                <p className="text-white text-opacity-90 text-lg">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2">{service.title}</h2>
+                <p className="text-white text-opacity-90 text-sm sm:text-base md:text-lg">
                   Professional solutions tailored to your needs
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="p-8">
+          <div className="p-4 sm:p-6 md:p-8">
             {/* Overview */}
-            <div className="mb-8">
-              <h3 className="text-2xl font-bold text-slate-800 mb-4">Overview</h3>
-              <p className="text-slate-600 text-lg leading-relaxed">
+            <div className="mb-6 sm:mb-8">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-800 mb-3 sm:mb-4">Overview</h3>
+              <p className="text-slate-600 text-sm sm:text-base md:text-lg leading-relaxed">
                 {service.fullContent.overview}
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 gap-6 sm:gap-8">
               {/* Features */}
               <div>
-                <h3 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
-                  <Star className={`w-5 h-5 ${colors.text} mr-2`} />
+                <h3 className="text-lg sm:text-xl font-bold text-slate-800 mb-3 sm:mb-4 flex items-center">
+                  <Star className={`w-4 h-4 sm:w-5 sm:h-5 ${colors.text} mr-2`} />
                   Key Features
                 </h3>
-                <ul className="space-y-3">
+                <ul className="space-y-2 sm:space-y-3">
                   {service.fullContent.features.map((feature, index) => (
-                    <li key={index} className="flex items-start space-x-3">
-                      <CheckCircle className={`w-5 h-5 ${colors.text} mt-0.5 flex-shrink-0`} />
-                      <span className="text-slate-700">{feature}</span>
+                    <li key={index} className="flex items-start space-x-2 sm:space-x-3">
+                      <CheckCircle className={`w-4 h-4 sm:w-5 sm:h-5 ${colors.text} mt-0.5 flex-shrink-0`} />
+                      <span className="text-slate-700 text-sm sm:text-base">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -230,47 +230,31 @@ const HomePage = () => {
 
               {/* Benefits */}
               <div>
-                <h3 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
-                  <Award className={`w-5 h-5 ${colors.text} mr-2`} />
+                <h3 className="text-lg sm:text-xl font-bold text-slate-800 mb-3 sm:mb-4 flex items-center">
+                  <Award className={`w-4 h-4 sm:w-5 sm:h-5 ${colors.text} mr-2`} />
                   Benefits
                 </h3>
-                <ul className="space-y-3">
+                <ul className="space-y-2 sm:space-y-3">
                   {service.fullContent.benefits.map((benefit, index) => (
-                    <li key={index} className="flex items-start space-x-3">
-                      <CheckCircle className={`w-5 h-5 ${colors.text} mt-0.5 flex-shrink-0`} />
-                      <span className="text-slate-700">{benefit}</span>
+                    <li key={index} className="flex items-start space-x-2 sm:space-x-3">
+                      <CheckCircle className={`w-4 h-4 sm:w-5 sm:h-5 ${colors.text} mt-0.5 flex-shrink-0`} />
+                      <span className="text-slate-700 text-sm sm:text-base">{benefit}</span>
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
 
-            {/* Pricing & Response */}
-            {/* <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className={`${colors.accent} rounded-2xl p-6`}>
-                <h4 className="font-bold text-slate-800 mb-2 flex items-center">
-                  <Clock className={`w-5 h-5 ${colors.text} mr-2`} />
-                  Pricing
-                </h4>
-                <p className="text-slate-700 text-lg font-semibold">{service.fullContent.pricing}</p>
-              </div>
-              <div className={`${colors.accent} rounded-2xl p-6`}>
-                <h4 className="font-bold text-slate-800 mb-2 flex items-center">
-                  <Award className={`w-5 h-5 ${colors.text} mr-2`} />
-                  What's Included
-                </h4>
-                <p className="text-slate-700 text-lg font-semibold">{service.fullContent.response}</p>
-              </div>
-            </div> */}
-
             {/* CTA */}
-            <div className="mt-8 text-center">
+            <div className="mt-6 sm:mt-8 text-center">
+              <Link to={"/contact"}>
               <button 
-                className={`bg-gradient-to-r ${colors.bg} text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105`}
+                className={`bg-gradient-to-r ${colors.bg} text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105 w-full sm:w-auto`}
               >
                 Get Started Today
               </button>
-              <p className="text-slate-500 mt-3">Contact us for a free consultation</p>
+              </Link>
+              <p className="text-slate-500 mt-2 sm:mt-3 text-xs sm:text-sm">Contact us for a free consultation</p>
             </div>
           </div>
         </div>
@@ -302,8 +286,8 @@ const HomePage = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-slate-800 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KPGcgZmlsbD0iIzAwN2NmZiIgZmlsbC1vcGFjaXR5PSIwLjA1Ij4KPGNwYXRoIGQ9Ik0zNiAzNHYxMGgxMFYzNEgzNnpNMCAyMGgyMFYwSDBWMjB6bTIwIDIwdjEwaDE2VjQwSDIwem0yMC0yMGgxMFYxMEg0MHYxMHptLTIwIDBoMTBWMTBIMjB2MTB6bS0yMCAwaDEwVjEwSDB2MTB6bTQwIDIwaDE6VjQwSDQwVjYwem0yMC0yMHYxMGgtMTBWNDBoMTB6Ii8+PC9nPgo8L2c+Cjwvc3ZnPg==')] opacity-30"></div>
+      <section className="relative py-15 bg-gradient-to-br from-blue-900 via-blue-800 to-slate-800 text-white overflow-hidden">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KPGcgZmlsbD0iIzAwN2NmZiIgZmlsbC1vcGFjaXR5PSIwLjA1Ij4KPGNwYXRoIGQ9Ik0zNiAzNHYxMGgxMFYzNEgzNnpNMCAyMGgyMFYwSDBWMjB6bTIwIDIwdjEwaDE2VjQwSDIwem0yMC0yMGgxMFYxMEg0MHYxMHptLTIwIDBoMTBWMTBIMjB2MTB6bS0yMCAwaDEwVjEwSDB2MTB6bTQwIDIwaDE6VjQwSDQwVjYwem0yMC0yMHYxMGgtMTBWNDBINDBWNjB6Ii8+PC9nPgo8L2c+Cjwvc3ZnPg==')] opacity-30"></div>
         
         <div className="container mx-auto px-6 pt-32 pb-20 relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -353,7 +337,7 @@ const HomePage = () => {
       </section>
 
       {/* Services Section */}
-      <section ref={servicesRef} className="py-20 bg-gradient-to-br from-slate-50 via-blue-50/30 to-cyan-50/30 opacity-0 transform translate-y-8">
+      <section ref={servicesRef} className="py-10 bg-gradient-to-br from-slate-50 via-blue-50/30 to-cyan-50/30 opacity-0 transform translate-y-8">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <div className="inline-flex items-center bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
@@ -419,114 +403,113 @@ const HomePage = () => {
             </div>
           </div>
 
-          {/* Service Categories */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-            {/* Left Column */}
-            <div className="space-y-6">
-              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-100">
-                <div className="flex items-start space-x-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Headphones className="w-7 h-7 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-slate-800 mb-3">IT Support & Consulting</h3>
-                    <p className="text-slate-600 mb-4 leading-relaxed">
-                      Comprehensive technical support and strategic IT consulting to optimize your business operations.
-                    </p>
-                    <div 
-                      className="flex items-center text-blue-600 font-semibold group cursor-pointer"
-                      onClick={() => setActivePopup('it-support')}
-                    >
-                      <span className="group-hover:mr-2 transition-all duration-200">Learn More</span>
-                      <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" />
-                    </div>
-                  </div>
+          {/* Service Categories - Made more mobile friendly */}
+           <div className="grid grid-cols-1 gap-6 sm:gap-8 mb-12">
+            {/* IT Support & Consulting */}
+            <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-100">
+              <div className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Headphones className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
                 </div>
-              </div>
-
-              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-emerald-100">
-                <div className="flex items-start space-x-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Shield className="w-7 h-7 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-slate-800 mb-3">Cybersecurity Solutions</h3>
-                    <p className="text-slate-600 mb-4 leading-relaxed">
-                      Advanced security measures to protect your business from evolving cyber threats.
-                    </p>
-                    <div 
-                      className="flex items-center text-emerald-600 font-semibold group cursor-pointer"
-                      onClick={() => setActivePopup('cybersecurity')}
-                    >
-                      <span className="group-hover:mr-2 transition-all duration-200">Learn More</span>
-                      <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-indigo-100">
-                <div className="flex items-start space-x-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Users className="w-7 h-7 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-slate-800 mb-3">Virtual CIO Services</h3>
-                    <p className="text-slate-600 mb-4 leading-relaxed">
-                      Expert guidance to align your technology investments with business objectives.
-                    </p>
-                    <div 
-                      className="flex items-center text-indigo-600 font-semibold group cursor-pointer"
-                      onClick={() => setActivePopup('virtual-cio')}
-                    >
-                      <span className="group-hover:mr-2 transition-all duration-200">Learn More</span>
-                      <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" />
-                    </div>
+                <div className="flex-1 w-full">
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-800 mb-2 sm:mb-3">IT Support & Consulting</h3>
+                  <p className="text-slate-600 mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">
+                    Comprehensive technical support and strategic IT consulting to optimize your business operations.
+                  </p>
+                  <div 
+                    className="flex items-center text-blue-600 font-semibold group cursor-pointer"
+                    onClick={() => setActivePopup('it-support')}
+                  >
+                    <span className="group-hover:mr-2 transition-all duration-200 text-sm sm:text-base">Learn More</span>
+                    <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" />
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Right Column */}
-            <div className="space-y-6">
-              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-cyan-100">
-                <div className="flex items-start space-x-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Cloud className="w-7 h-7 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-slate-800 mb-3">Cloud Infrastructure</h3>
-                    <p className="text-slate-600 mb-4 leading-relaxed">
-                      Scalable cloud solutions designed for modern businesses seeking flexibility and growth.
-                    </p>
-                    <div 
-                      className="flex items-center text-cyan-600 font-semibold group cursor-pointer"
-                      onClick={() => setActivePopup('cloud-infrastructure')}
-                    >
-                      <span className="group-hover:mr-2 transition-all duration-200">Learn More</span>
-                      <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" />
-                    </div>
+            {/* Cybersecurity Solutions */}
+            <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-emerald-100">
+              <div className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Shield className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                </div>
+                <div className="flex-1 w-full">
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-800 mb-2 sm:mb-3">Cybersecurity Solutions</h3>
+                  <p className="text-slate-600 mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">
+                    Advanced security measures to protect your business from evolving cyber threats.
+                  </p>
+                  <div 
+                    className="flex items-center text-emerald-600 font-semibold group cursor-pointer"
+                    onClick={() => setActivePopup('cybersecurity')}
+                  >
+                    <span className="group-hover:mr-2 transition-all duration-200 text-sm sm:text-base">Learn More</span>
+                    <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" />
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-purple-100">
-                <div className="flex items-start space-x-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Users className="w-7 h-7 text-white" />
+            {/* Virtual CIO Services */}
+            <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-indigo-100">
+              <div className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Users className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                </div>
+                <div className="flex-1 w-full">
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-800 mb-2 sm:mb-3">Virtual CIO Services</h3>
+                  <p className="text-slate-600 mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">
+                    Expert guidance to align your technology investments with business objectives.
+                  </p>
+                  <div 
+                    className="flex items-center text-indigo-600 font-semibold group cursor-pointer"
+                    onClick={() => setActivePopup('virtual-cio')}
+                  >
+                    <span className="group-hover:mr-2 transition-all duration-200 text-sm sm:text-base">Learn More</span>
+                    <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" />
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-slate-800 mb-3">Strategic Consulting</h3>
-                    <p className="text-slate-600 mb-4 leading-relaxed">
-                      Expert guidance to align your technology investments with business objectives.
-                    </p>
-                    <div 
-                      className="flex items-center text-purple-600 font-semibold group cursor-pointer"
-                      onClick={() => setActivePopup('strategic-consulting')}
-                    >
-                      <span className="group-hover:mr-2 transition-all duration-200">Learn More</span>
-                      <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" />
-                    </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Cloud Infrastructure */}
+            <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-cyan-100">
+              <div className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Cloud className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                </div>
+                <div className="flex-1 w-full">
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-800 mb-2 sm:mb-3">Cloud Infrastructure</h3>
+                  <p className="text-slate-600 mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">
+                    Scalable cloud solutions designed for modern businesses seeking flexibility and growth.
+                  </p>
+                  <div 
+                    className="flex items-center text-cyan-600 font-semibold group cursor-pointer"
+                    onClick={() => setActivePopup('cloud-infrastructure')}
+                  >
+                    <span className="group-hover:mr-2 transition-all duration-200 text-sm sm:text-base">Learn More</span>
+                    <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Strategic Consulting */}
+            <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-purple-100">
+              <div className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Users className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                </div>
+                <div className="flex-1 w-full">
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-800 mb-2 sm:mb-3">Strategic Consulting</h3>
+                  <p className="text-slate-600 mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">
+                    Expert guidance to align your technology investments with business objectives.
+                  </p>
+                  <div 
+                    className="flex items-center text-purple-600 font-semibold group cursor-pointer"
+                    onClick={() => setActivePopup('strategic-consulting')}
+                  >
+                    <span className="group-hover:mr-2 transition-all duration-200 text-sm sm:text-base">Learn More</span>
+                    <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" />
                   </div>
                 </div>
               </div>
@@ -534,22 +517,22 @@ const HomePage = () => {
           </div>
 
           {/* Stats Section */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 bg-white rounded-2xl p-8 shadow-lg">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 bg-white rounded-2xl p-6 sm:p-8 shadow-lg">
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">500+</div>
-              <div className="text-slate-600 font-medium">Projects Completed</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-600 mb-1 sm:mb-2">500+</div>
+              <div className="text-slate-600 font-medium text-xs sm:text-sm md:text-base">Projects Completed</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-emerald-600 mb-2">24/7</div>
-              <div className="text-slate-600 font-medium">Support Available</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-emerald-600 mb-1 sm:mb-2">24/7</div>
+              <div className="text-slate-600 font-medium text-xs sm:text-sm md:text-base">Support Available</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-cyan-600 mb-2">99.9%</div>
-              <div className="text-slate-600 font-medium">Uptime Guarantee</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-cyan-600 mb-1 sm:mb-2">99.9%</div>
+              <div className="text-slate-600 font-medium text-xs sm:text-sm md:text-base">Uptime Guarantee</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-indigo-600 mb-2">10+</div>
-              <div className="text-slate-600 font-medium">Years Experience</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-indigo-600 mb-1 sm:mb-2">10+</div>
+              <div className="text-slate-600 font-medium text-xs sm:text-sm md:text-base">Years Experience</div>
             </div>
           </div>
         </div>
