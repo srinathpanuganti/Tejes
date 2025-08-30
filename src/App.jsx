@@ -9,11 +9,14 @@ import ContactPage from "./pages/ContactPage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { Toaster } from "./components/ui/toaster";
+import BlogPostPage from "./pages/BlogPostPage";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <div className="App min-h-screen bg-slate-50">
       <Router>
+        <ScrollToTop/>
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -21,6 +24,7 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/blog-post/:id" element={<BlogPostPage />} />
         </Routes>
         <Footer />
         <Toaster />

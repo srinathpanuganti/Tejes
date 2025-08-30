@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import { Calendar, User, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { Calendar, User } from "lucide-react";
 import { Card, CardContent } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
@@ -8,6 +9,7 @@ import { mockData } from "../data/mockData";
 const BlogPage = () => {
   const headerRef = useRef(null);
   const blogsRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const observerOptions = {
@@ -29,8 +31,15 @@ const BlogPage = () => {
     return () => observer.disconnect();
   }, []);
 
-  const BlogCard = ({ title, category, image, excerpt, date }) => (
-    <Card className="group bg-white hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-0 shadow-lg overflow-hidden">
+  const handleBlogClick = (postId) => {
+    navigate(`/blog-post/${postId}`);
+  };
+
+  const BlogCard = ({ id, title, category, image, excerpt, date }) => (
+    <Card 
+      className="group bg-white hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-0 shadow-lg overflow-hidden cursor-pointer"
+      onClick={() => handleBlogClick(id)}
+    >
       <div className="relative overflow-hidden">
         <img 
           src={image} 
@@ -46,6 +55,10 @@ const BlogPage = () => {
         <Button 
           className="absolute bottom-4 left-4 bg-white text-blue-600 hover:bg-blue-50 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0"
           size="sm"
+          onClick={(e) => {
+            e.stopPropagation();
+            handleBlogClick(id);
+          }}
         >
           Read More
         </Button>
@@ -99,76 +112,6 @@ const BlogPage = () => {
             {mockData.blogPosts.map((post) => (
               <BlogCard key={post.id} {...post} />
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Articles Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">
-              Featured Articles
-            </h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-              Deep dive into the most important topics shaping the future of technology
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <Card className="group bg-gradient-to-br from-blue-50 to-cyan-50 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-0 shadow-lg">
-              <CardContent className="p-8 space-y-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">🔒</span>
-                </div>
-                <h3 className="text-2xl font-bold text-slate-800">Cybersecurity Best Practices</h3>
-                <p className="text-slate-600 leading-relaxed">
-                  Learn about the latest cybersecurity threats and how to protect your business from 
-                  evolving security challenges in the digital landscape.
-                </p>
-                <Button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white group-hover:translate-x-1 transition-all duration-300">
-                  Read Article <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="group bg-gradient-to-br from-emerald-50 to-blue-50 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-0 shadow-lg">
-              <CardContent className="p-8 space-y-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-blue-500 rounded-2xl flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">☁️</span>
-                </div>
-                <h3 className="text-2xl font-bold text-slate-800">Cloud Migration Strategies</h3>
-                <p className="text-slate-600 leading-relaxed">
-                  Discover proven strategies for successful cloud migration that can help reduce costs 
-                  and improve scalability for your organization.
-                </p>
-                <Button className="bg-gradient-to-r from-emerald-600 to-blue-500 hover:from-emerald-700 hover:to-blue-600 text-white group-hover:translate-x-1 transition-all duration-300">
-                  Read Article <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Newsletter Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-cyan-500 text-white">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Stay in the Loop
-          </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Subscribe to our newsletter and get the latest IT insights delivered straight to your inbox
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-lg mx-auto">
-            <input 
-              type="email" 
-              placeholder="Enter your email"
-              className="flex-1 px-6 py-3 rounded-lg text-slate-800 focus:outline-none focus:ring-2 focus:ring-white/50"
-            />
-            <Button className="bg-white text-blue-600 hover:bg-slate-100 px-8 py-3 rounded-lg transition-all duration-300">
-              Subscribe
-            </Button>
           </div>
         </div>
       </section>

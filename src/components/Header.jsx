@@ -59,9 +59,11 @@ const Header = () => {
                 {item.name}
               </Link>
             ))}
+            <Link to={"/contact"}>
             <Button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white px-6 py-2 rounded-lg transition-all duration-200">
               Get Started
             </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -91,9 +93,11 @@ const Header = () => {
                   {item.name}
                 </Link>
               ))}
+              <Link to={"/contact"}>
               <Button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white px-6 py-2 rounded-lg transition-all duration-200 w-fit">
                 Get Started
               </Button>
+              </Link>
             </div>
           </div>
         )}

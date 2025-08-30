@@ -45,12 +45,12 @@ const ServiceCard = ({ icon, title, description, color }) => {
           {description}
         </p>
 
-        <Button 
+        {/* <Button 
           variant="ghost" 
           className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 font-semibold transition-all duration-300 group-hover:translate-x-1"
         >
           Learn More <ArrowRight className="ml-2 w-4 h-4" />
-        </Button>
+        </Button> */}
       </CardContent>
     </Card>
   );

@@ -135,7 +135,6 @@ const Footer = () => {
                 { name: "Why Choose Us", path: "/about" },
                 { name: "Latest News", path: "/blog" },
                 { name: "Contact Support", path: "/contact" },
-                { name: "Get Started", path: "/contact" }
               ].map((link, index) => (
                 <li key={index}>
                   <Link 

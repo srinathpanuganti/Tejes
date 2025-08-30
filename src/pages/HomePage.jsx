@@ -1,15 +1,282 @@
-import React, { useEffect, useRef } from "react";
-import { ArrowRight, Shield, Cloud, Users, Cpu, CheckCircle, Headphones } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
+import { ArrowRight, Shield, Cloud, Users, Cpu, CheckCircle, Headphones, X, Star, Clock, Award } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
 import ServiceCard from "../components/ServiceCard";
 import TestimonialCard from "../components/TestimonialCard";
 import { mockData } from "../data/mockData";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const heroRef = useRef(null);
   const servicesRef = useRef(null);
   const testimonialsRef = useRef(null);
+  const [activePopup, setActivePopup] = useState(null);
+
+  const services = {
+    'it-support': {
+      title: 'IT Support & Consulting',
+      icon: Headphones,
+      color: 'blue',
+      description: 'Comprehensive technical support and strategic IT consulting to optimize your business operations.',
+      fullContent: {
+        overview: 'Our comprehensive IT support services ensure your business technology runs smoothly 24/7. From helpdesk support to strategic consulting, we provide end-to-end solutions tailored to your needs.',
+        features: [
+          '24/7 Help Desk Support',
+          'Remote & On-site Technical Support',
+          'System Monitoring & Maintenance',
+          'Software Installation & Updates',
+          'Network Infrastructure Management'
+        ],
+        benefits: [
+          'Reduced downtime and increased productivity',
+          'Cost-effective IT management',
+          'Expert guidance on technology decisions',
+          'Proactive problem resolution'
+        ],
+        pricing: 'Starting from $99/month per user',
+        response: '< 2 hours average response time'
+      }
+    },
+    'cybersecurity': {
+      title: 'Cybersecurity Solutions',
+      icon: Shield,
+      color: 'emerald',
+      description: 'Advanced security measures to protect your business from evolving cyber threats.',
+      fullContent: {
+        overview: 'Protect your business with our comprehensive cybersecurity solutions. We implement multi-layered security strategies to safeguard your data, systems, and operations from cyber threats.',
+        features: [
+          'Advanced Threat Detection',
+          'Firewall & Network Security',
+          'Employee Security Training',
+          'Vulnerability Assessments',
+          'Incident Response Planning',
+        ],
+        benefits: [
+          'Protection against data breaches',
+          'Regulatory compliance assurance',
+          'Enhanced customer trust',
+          'Business continuity protection'
+        ],
+        pricing: 'Custom pricing based on assessment',
+        response: 'Free security audit included'
+      }
+    },
+    'virtual-cio': {
+      title: 'Virtual CIO Services',
+      icon: Users,
+      color: 'indigo',
+      description: 'Expert guidance to align your technology investments with business objectives.',
+      fullContent: {
+        overview: 'Get C-level technology leadership without the full-time cost. Our Virtual CIO services provide strategic IT guidance to drive your business forward.',
+        features: [
+          'Strategic IT Planning',
+          'Technology Roadmap Development',
+          'Budget Planning & Optimization',
+          'Risk Assessment & Mitigation',
+          'Digital Transformation Strategy'
+        ],
+        benefits: [
+          'Expert leadership at fractional cost',
+          'Improved technology ROI',
+          'Strategic competitive advantage',
+          'Streamlined IT operations'
+        ],
+        pricing: 'Starting from $2,500/month',
+        response: 'Quarterly strategic reviews included'
+      }
+    },
+    'cloud-infrastructure': {
+      title: 'Cloud Infrastructure',
+      icon: Cloud,
+      color: 'cyan',
+      description: 'Scalable cloud solutions designed for modern businesses seeking flexibility and growth.',
+      fullContent: {
+        overview: 'Transform your IT infrastructure with our cloud solutions. We help businesses migrate, optimize, and manage their cloud environments for maximum efficiency and cost savings.',
+        features: [
+          'Cloud Migration Planning',
+          'Multi-Cloud Management',
+          'Backup & Disaster Recovery',
+          'Performance Optimization',
+          'Cost Management & Monitoring'
+        ],
+        benefits: [
+          'Reduced infrastructure costs',
+          'Enhanced scalability & flexibility',
+          'Improved disaster recovery',
+          'Global accessibility'
+        ],
+        pricing: 'Pay-as-you-scale model',
+        response: 'Free migration assessment'
+      }
+    },
+    'strategic-consulting': {
+      title: 'Strategic Consulting',
+      icon: Users,
+      color: 'purple',
+      description: 'Expert guidance to align your technology investments with business objectives.',
+      fullContent: {
+        overview: 'Our strategic consulting services help organizations make informed technology decisions that drive business growth and operational efficiency.',
+        features: [
+          'Digital Transformation Planning',
+          'Process Optimization',
+          'Technology Assessment',
+          'ROI Analysis & Reporting',
+          'Industry Best Practices'
+        ],
+        benefits: [
+          'Improved operational efficiency',
+          'Better technology alignment',
+          'Reduced implementation risks',
+          'Accelerated digital transformation'
+        ],
+        pricing: 'Project-based pricing available',
+        response: 'Complimentary consultation'
+      }
+    }
+  };
+
+  const getColorClasses = (color) => {
+    const colorMap = {
+      blue: {
+        bg: 'from-blue-500 to-blue-600',
+        text: 'text-blue-600',
+        border: 'border-blue-100',
+        accent: 'bg-blue-50'
+      },
+      emerald: {
+        bg: 'from-emerald-500 to-emerald-600',
+        text: 'text-emerald-600',
+        border: 'border-emerald-100',
+        accent: 'bg-emerald-50'
+      },
+      indigo: {
+        bg: 'from-indigo-500 to-indigo-600',
+        text: 'text-indigo-600',
+        border: 'border-indigo-100',
+        accent: 'bg-indigo-50'
+      },
+      cyan: {
+        bg: 'from-cyan-500 to-cyan-600',
+        text: 'text-cyan-600',
+        border: 'border-cyan-100',
+        accent: 'bg-cyan-50'
+      },
+      purple: {
+        bg: 'from-purple-500 to-purple-600',
+        text: 'text-purple-600',
+        border: 'border-purple-100',
+        accent: 'bg-purple-50'
+      }
+    };
+    return colorMap[color] || colorMap.blue;
+  };
+
+  const PopupModal = ({ serviceKey, service }) => {
+    if (activePopup !== serviceKey) return null;
+    
+    const colors = getColorClasses(service.color);
+    const Icon = service.icon;
+
+    return (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div className="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+          {/* Header */}
+          <div className={`relative p-8 bg-gradient-to-br ${colors.bg} text-white rounded-t-3xl`}>
+            <button
+              onClick={() => setActivePopup(null)}
+              className="absolute top-6 right-6 p-2 hover:bg-white hover:bg-opacity-20 rounded-full transition-all duration-200"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <div className="flex items-center space-x-4">
+              <div className="w-16 h-16 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center">
+                <Icon className="w-8 h-8 text-white" />
+              </div>
+              <div>
+                <h2 className="text-3xl font-bold mb-2">{service.title}</h2>
+                <p className="text-white text-opacity-90 text-lg">
+                  Professional solutions tailored to your needs
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-8">
+            {/* Overview */}
+            <div className="mb-8">
+              <h3 className="text-2xl font-bold text-slate-800 mb-4">Overview</h3>
+              <p className="text-slate-600 text-lg leading-relaxed">
+                {service.fullContent.overview}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Features */}
+              <div>
+                <h3 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                  <Star className={`w-5 h-5 ${colors.text} mr-2`} />
+                  Key Features
+                </h3>
+                <ul className="space-y-3">
+                  {service.fullContent.features.map((feature, index) => (
+                    <li key={index} className="flex items-start space-x-3">
+                      <CheckCircle className={`w-5 h-5 ${colors.text} mt-0.5 flex-shrink-0`} />
+                      <span className="text-slate-700">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Benefits */}
+              <div>
+                <h3 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                  <Award className={`w-5 h-5 ${colors.text} mr-2`} />
+                  Benefits
+                </h3>
+                <ul className="space-y-3">
+                  {service.fullContent.benefits.map((benefit, index) => (
+                    <li key={index} className="flex items-start space-x-3">
+                      <CheckCircle className={`w-5 h-5 ${colors.text} mt-0.5 flex-shrink-0`} />
+                      <span className="text-slate-700">{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Pricing & Response */}
+            {/* <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className={`${colors.accent} rounded-2xl p-6`}>
+                <h4 className="font-bold text-slate-800 mb-2 flex items-center">
+                  <Clock className={`w-5 h-5 ${colors.text} mr-2`} />
+                  Pricing
+                </h4>
+                <p className="text-slate-700 text-lg font-semibold">{service.fullContent.pricing}</p>
+              </div>
+              <div className={`${colors.accent} rounded-2xl p-6`}>
+                <h4 className="font-bold text-slate-800 mb-2 flex items-center">
+                  <Award className={`w-5 h-5 ${colors.text} mr-2`} />
+                  What's Included
+                </h4>
+                <p className="text-slate-700 text-lg font-semibold">{service.fullContent.response}</p>
+              </div>
+            </div> */}
+
+            {/* CTA */}
+            <div className="mt-8 text-center">
+              <button 
+                className={`bg-gradient-to-r ${colors.bg} text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105`}
+              >
+                Get Started Today
+              </button>
+              <p className="text-slate-500 mt-3">Contact us for a free consultation</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   useEffect(() => {
     const observerOptions = {
@@ -36,7 +303,7 @@ const HomePage = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-slate-800 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KPGcgZmlsbD0iIzAwN2NmZiIgZmlsbC1vcGFjaXR5PSIwLjA1Ij4KPHBhdGggZD0iTTM2IDM0djEwaDEwVjM0SDM2ek0wIDIwaDIwVjBIMFYyMHptMjAgMjB2MTBoMTBWNDBIMjB6bTIwLTIwaDEwVjEwSDQwdjEwem0tMjAgMGgxMFYxMEgyMHYxMHptLTIwIDBoMTBWMTBIMHYxMHptNDAgMjBoMTBWNDBINDBWNjB6bTIwLTIwdjEwaC0xMFY0MGgxMHoiLz4KPC9nPgo8L2c+Cjwvc3ZnPg==')] opacity-30"></div>
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KPGcgZmlsbD0iIzAwN2NmZiIgZmlsbC1vcGFjaXR5PSIwLjA1Ij4KPGNwYXRoIGQ9Ik0zNiAzNHYxMGgxMFYzNEgzNnpNMCAyMGgyMFYwSDBWMjB6bTIwIDIwdjEwaDE2VjQwSDIwem0yMC0yMGgxMFYxMEg0MHYxMHptLTIwIDBoMTBWMTBIMjB2MTB6bS0yMCAwaDEwVjEwSDB2MTB6bTQwIDIwaDE6VjQwSDQwVjYwem0yMC0yMHYxMGgtMTBWNDBoMTB6Ii8+PC9nPgo8L2c+Cjwvc3ZnPg==')] opacity-30"></div>
         
         <div className="container mx-auto px-6 pt-32 pb-20 relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -53,12 +320,16 @@ const HomePage = () => {
                 updated on all of the latest and cutting-edge IT technologies and solutions.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
+                <Link to={"/contact"}>
                 <Button className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-8 py-4 text-lg rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center">
                   Get Started <ArrowRight className="ml-2" size={20} />
                 </Button>
+                </Link>
+                <Link to={"/services"}>
                 <Button variant="outline" className="border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-blue-900 px-8 py-4 text-lg rounded-lg transition-all duration-300">
                   Learn More
                 </Button>
+                </Link>
               </div>
             </div>
             
@@ -162,7 +433,10 @@ const HomePage = () => {
                     <p className="text-slate-600 mb-4 leading-relaxed">
                       Comprehensive technical support and strategic IT consulting to optimize your business operations.
                     </p>
-                    <div className="flex items-center text-blue-600 font-semibold group cursor-pointer">
+                    <div 
+                      className="flex items-center text-blue-600 font-semibold group cursor-pointer"
+                      onClick={() => setActivePopup('it-support')}
+                    >
                       <span className="group-hover:mr-2 transition-all duration-200">Learn More</span>
                       <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" />
                     </div>
@@ -180,7 +454,31 @@ const HomePage = () => {
                     <p className="text-slate-600 mb-4 leading-relaxed">
                       Advanced security measures to protect your business from evolving cyber threats.
                     </p>
-                    <div className="flex items-center text-emerald-600 font-semibold group cursor-pointer">
+                    <div 
+                      className="flex items-center text-emerald-600 font-semibold group cursor-pointer"
+                      onClick={() => setActivePopup('cybersecurity')}
+                    >
+                      <span className="group-hover:mr-2 transition-all duration-200">Learn More</span>
+                      <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-indigo-100">
+                <div className="flex items-start space-x-4">
+                  <div className="w-14 h-14 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Users className="w-7 h-7 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-slate-800 mb-3">Virtual CIO Services</h3>
+                    <p className="text-slate-600 mb-4 leading-relaxed">
+                      Expert guidance to align your technology investments with business objectives.
+                    </p>
+                    <div 
+                      className="flex items-center text-indigo-600 font-semibold group cursor-pointer"
+                      onClick={() => setActivePopup('virtual-cio')}
+                    >
                       <span className="group-hover:mr-2 transition-all duration-200">Learn More</span>
                       <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" />
                     </div>
@@ -201,7 +499,10 @@ const HomePage = () => {
                     <p className="text-slate-600 mb-4 leading-relaxed">
                       Scalable cloud solutions designed for modern businesses seeking flexibility and growth.
                     </p>
-                    <div className="flex items-center text-cyan-600 font-semibold group cursor-pointer">
+                    <div 
+                      className="flex items-center text-cyan-600 font-semibold group cursor-pointer"
+                      onClick={() => setActivePopup('cloud-infrastructure')}
+                    >
                       <span className="group-hover:mr-2 transition-all duration-200">Learn More</span>
                       <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" />
                     </div>
@@ -209,9 +510,9 @@ const HomePage = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-indigo-100">
+              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-purple-100">
                 <div className="flex items-start space-x-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
                     <Users className="w-7 h-7 text-white" />
                   </div>
                   <div className="flex-1">
@@ -219,7 +520,10 @@ const HomePage = () => {
                     <p className="text-slate-600 mb-4 leading-relaxed">
                       Expert guidance to align your technology investments with business objectives.
                     </p>
-                    <div className="flex items-center text-indigo-600 font-semibold group cursor-pointer">
+                    <div 
+                      className="flex items-center text-purple-600 font-semibold group cursor-pointer"
+                      onClick={() => setActivePopup('strategic-consulting')}
+                    >
                       <span className="group-hover:mr-2 transition-all duration-200">Learn More</span>
                       <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" />
                     </div>
@@ -319,11 +623,18 @@ const HomePage = () => {
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Let's discuss how TEJES can help accelerate your digital transformation journey
           </p>
+          <Link to={"/contact"}>
           <Button className="bg-white text-blue-600 hover:bg-slate-100 px-8 py-4 text-lg rounded-lg transition-all duration-300 transform hover:scale-105">
             Contact Us Today
           </Button>
+          </Link>
         </div>
       </section>
+
+      {/* Service Popups */}
+      {Object.entries(services).map(([key, service]) => (
+        <PopupModal key={key} serviceKey={key} service={service} />
+      ))}
     </div>
   );
 };
