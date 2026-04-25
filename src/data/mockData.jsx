@@ -9,7 +9,7 @@ export const mockData = {
     {
       icon: "ShieldIcon",
       title: "Network Security",
-      description: "A Network Security set of firewall is composed to help control who organizations and the guests, Here we'll outline what network security implies, why your business requires security best practices.",
+      description: "Firewalls are essential for protecting your network, managing access for employees and guests, and safeguarding your business from threats. In this section, we outline the key components of network security and explain why following best practices is critical for every business.",
       color: "emerald"
     },
     {
@@ -23,12 +23,6 @@ export const mockData = {
       title: "IT Consultancy",
       description: "Profit by our IT counseling ability to improve your client performance, dispatch creative arrangements and speed up your business development processes.",
       color: "indigo"
-    },
-    {
-      icon: "MonitorIcon",
-      title: "Virtual CIO Services",
-      description: "Today, the essential utilization of innovation is crucial to business achievement and the job of Chief Information Officer and accomplished administrator for the business objectives.",
-      color: "violet"
     }
   ],
   
@@ -81,13 +75,13 @@ export const mockData = {
     name: "TEJES",
     tagline: "Complete solution for your business",
     description: "With our years of experience in designing, providing, and implementing full range of business technology solutions, we stay abreast of assisting our clients in staying updated on all of the latest and cutting-edge IT technologies and solutions, regardless of how small or how large their businesses are.",
-    mission: "We are beginning delivering the very best of IT innovations and solutions rapidly and progressively. We offer solutions and consultancy services for any business needs.",
+    mission: "To deliver innovative IT solutions and expert consultancy that help businesses thrive. We are committed to providing reliable, cutting-edge technology support for every business need.",
     vision: "This even gives us more assurance of what we are capable of, but still remain modest in our capabilities. Years service will take care of your IT, providing enough time for you to focus on the other important aspects of what makes your business special.",
     
     contact: {
       address: "14980 Zuni St Broomfield CO 80023",
       email: "info@tejes.com", 
-      phone: "3005236659"
+      phone: "+1 (303) 523-6659"
     },
 
     team: [

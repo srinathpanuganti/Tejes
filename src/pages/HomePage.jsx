@@ -299,7 +299,7 @@ const HomePage = () => {
                 </span>
               </h1>
               <p className="text-xl text-blue-100 leading-relaxed max-w-2xl">
-                With our years of experience in designing, providing, and implementing full range of 
+                With our 25+ years of experience in designing, providing, and implementing full range of 
                 business technology solutions, we stay abreast of assisting our clients in staying 
                 updated on all of the latest and cutting-edge IT technologies and solutions.
               </p>
@@ -450,7 +450,7 @@ const HomePage = () => {
             </div>
 
             {/* Virtual CIO Services */}
-            <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-indigo-100">
+            {/* <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-indigo-100">
               <div className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
                 <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0">
                   <Users className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
@@ -469,7 +469,7 @@ const HomePage = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* Cloud Infrastructure */}
             <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-cyan-100">
@@ -517,7 +517,7 @@ const HomePage = () => {
           </div>
 
           {/* Stats Section */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 bg-white rounded-2xl p-6 sm:p-8 shadow-lg">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 bg-white rounded-2xl p-6 sm:p-8 shadow-lg place-items-center">
             <div className="text-center">
               <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-600 mb-1 sm:mb-2">500+</div>
               <div className="text-slate-600 font-medium text-xs sm:text-sm md:text-base">Projects Completed</div>
@@ -525,10 +525,6 @@ const HomePage = () => {
             <div className="text-center">
               <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-emerald-600 mb-1 sm:mb-2">24/7</div>
               <div className="text-slate-600 font-medium text-xs sm:text-sm md:text-base">Support Available</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-cyan-600 mb-1 sm:mb-2">99.9%</div>
-              <div className="text-slate-600 font-medium text-xs sm:text-sm md:text-base">Uptime Guarantee</div>
             </div>
             <div className="text-center">
               <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-indigo-600 mb-1 sm:mb-2">10+</div>
@@ -544,7 +540,7 @@ const HomePage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <h2 className="text-4xl md:text-5xl font-bold text-slate-800">
-                TEJES is a complete solution for your business
+                Tejes is a complete solution for your business
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed">
                 With our years of experience in designing, providing, and implementing full range of 
@@ -578,7 +574,7 @@ const HomePage = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section ref={testimonialsRef} className="py-20 bg-slate-50 opacity-0 transform translate-y-8">
+      {/* <section ref={testimonialsRef} className="py-20 bg-slate-50 opacity-0 transform translate-y-8">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">
@@ -595,7 +591,7 @@ const HomePage = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-cyan-500 text-white">
@@ -604,7 +600,7 @@ const HomePage = () => {
             Ready to Transform Your Business?
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Let's discuss how TEJES can help accelerate your digital transformation journey
+            Let's discuss how Tejes can help accelerate your digital transformation journey
           </p>
           <Link to={"/contact"}>
           <Button className="bg-white text-blue-600 hover:bg-slate-100 px-8 py-4 text-lg rounded-lg transition-all duration-300 transform hover:scale-105">

@@ -23,6 +23,8 @@ const Header = () => {
     { name: "About", path: "/about" },
     { name: "Blog", path: "/blog" },
     { name: "Contact", path: "/contact" },
+    { name: "SMS Privacy Policy", path: "/sms-privacy-policy" },
+    { name: "Text Messaging Terms", path: "/text-messaging-terms" },
   ];
 
   return (

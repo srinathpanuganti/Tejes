@@ -44,7 +44,7 @@ const AboutPage = () => {
               About <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">Us</span>
             </h1>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
-              Discover the story behind TEJES and our commitment to delivering exceptional IT solutions
+              Discover the story behind Tejes and our commitment to delivering exceptional IT solutions
             </p>
           </div>
         </div>
@@ -64,7 +64,7 @@ const AboutPage = () => {
             
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl font-bold text-slate-800">
-                TEJES is a complete solution for your business
+                Tejes is a complete solution for your business
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed">
                 {mockData.company.description}
@@ -161,7 +161,7 @@ const AboutPage = () => {
       </section>
 
       {/* Team Section */}
-      <section ref={teamRef} className="py-20 bg-slate-50 opacity-0 transform translate-y-8">
+      {/* <section ref={teamRef} className="py-20 bg-slate-50 opacity-0 transform translate-y-8">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">
@@ -195,7 +195,7 @@ const AboutPage = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

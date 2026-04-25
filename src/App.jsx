@@ -11,6 +11,8 @@ import Footer from "./components/Footer";
 import { Toaster } from "./components/ui/toaster";
 import BlogPostPage from "./pages/BlogPostPage";
 import ScrollToTop from "./components/ScrollToTop";
+import SmsPrivacyPolicyPage from "./pages/SmsPrivacyPolicyPage";
+import TextMessagingTermsPage from "./pages/TextMessagingTermsPage";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/blog-post/:id" element={<BlogPostPage />} />
+          <Route path="/sms-privacy-policy" element={<SmsPrivacyPolicyPage />} />
+          <Route path="/text-messaging-terms" element={<TextMessagingTermsPage />} />
         </Routes>
         <Footer />
         <Toaster />

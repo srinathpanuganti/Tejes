@@ -12,6 +12,8 @@ const ContactPage = () => {
     name: "",
     email: "",
     phone: "",
+    optIn: false,
+    optOut: false,
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -43,11 +45,31 @@ const ContactPage = () => {
   }, []);
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => {
+      if (type === "checkbox") {
+        if (name === "optIn") {
+          return {
+            ...prev,
+            optIn: checked,
+            optOut: checked ? false : prev.optOut,
+          };
+        }
+        if (name === "optOut") {
+          return {
+            ...prev,
+            optOut: checked,
+            optIn: checked ? false : prev.optIn,
+          };
+        }
+        return prev;
+      }
+
+      return {
+        ...prev,
+        [name]: value,
+      };
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -65,6 +87,8 @@ const ContactPage = () => {
         name: "",
         email: "",
         phone: "",
+        optIn: false,
+        optOut: false,
         message: ""
       });
       setIsSubmitting(false);
@@ -151,6 +175,38 @@ const ContactPage = () => {
                       placeholder="Enter your phone number"
                       className="w-full"
                     />
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-6 text-sm">
+                    <label className="flex items-start space-x-3">
+                      <input
+                        type="checkbox"
+                        name="optIn"
+                        checked={formData.optIn}
+                        onChange={handleInputChange}
+                        disabled={formData.optOut}
+                        className="mt-1 h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                      />
+                      <span className="text-slate-600">
+                        <span className="font-semibold text-slate-700 block">Opt-In</span>
+                        <span>Message and data rates may apply.</span>
+                      </span>
+                    </label>
+
+                    <label className="flex items-start space-x-3">
+                      <input
+                        type="checkbox"
+                        name="optOut"
+                        checked={formData.optOut}
+                        onChange={handleInputChange}
+                        disabled={formData.optIn}
+                        className="mt-1 h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                      />
+                      <span className="text-slate-600">
+                        <span className="font-semibold text-slate-700 block">Opt-Out</span>
+                        <span>Text STOP to unsubscribe from messages at any time.</span>
+                      </span>
+                    </label>
                   </div>
 
                   <div>
@@ -273,7 +329,7 @@ const ContactPage = () => {
       </section>
 
       {/* Map Section */}
-      <section className="py-20 bg-white">
+      {/* <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">
@@ -297,7 +353,7 @@ const ContactPage = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

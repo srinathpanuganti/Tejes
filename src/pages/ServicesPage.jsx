@@ -53,20 +53,19 @@ const ServicesPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl font-bold text-slate-800">
-                What Is TEJES
+                What Is Tejes
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed">
-                With our years of experience in designing, providing, and implementing full range of 
-                business technology solutions, we stay abreast of assisting our clients in staying updated on all of 
-                the latest and cutting-edge IT technologies and solutions, regardless of how small or how 
-                large their businesses are. We are beginning delivering the very best of IT innovations and 
-                solutions rapidly and progressively. We offer solutions and consultancy services for any business needs.
+                For over two decades, Tejes has been helping businesses of all sizes harness
+                the power of technology. From design and implementation to ongoing support, we
+                deliver innovative IT solutions that drive efficiency, security, and growth. Our
+                team takes care of your technology—so you can focus on what makes your business thrive.
               </p>
-              <p className="text-lg text-slate-600 leading-relaxed">
+              {/* <p className="text-lg text-slate-600 leading-relaxed">
                 We are capable of doing so, we have been doing this for a long time now, and we have no 
                 doubt as to our capabilities. Team service will take care of your IT, providing enough time for 
                 you to focus on the other important aspects of what makes your business special.
-              </p>
+              </p> */}
             </div>
             
             <div className="relative">
@@ -110,8 +109,9 @@ const ServicesPage = () => {
               <div className="space-y-6">
                 <h3 className="text-3xl font-bold text-slate-800">IT Support</h3>
                 <p className="text-lg text-slate-600 leading-relaxed">
-                  IT Support keeps up with the PC organizations of a wide range of size and constructions. 
-                  We give client PC support, as well as concentrating the online organization issues along as expected.
+                  From small startups to large enterprises, Tejes keeps your IT
+                  systems running smoothly. Our team provides full IT support and 
+                  proactively manages your network to prevent issues before they happen.
                 </p>
                 <ul className="space-y-3">
                   {[
